@@ -1,11 +1,12 @@
 var FILES_TO_CACHE = [
   "/",
-  "/index.js",
+  "/index.html",
+  "/js/index.js",
   "/styles.css",
   "/manifest.json",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
-  "/indexdb.js",
+  "/js/indexdb.js",
   "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
 ];
 
@@ -20,26 +21,6 @@ self.addEventListener("install", (event) => {
     })
   );
 });
-
-// // The activate handler takes care of cleaning up old caches.
-// self.addEventListener('activate', (event) => {
-//   const currentCaches = [PRECACHE, RUNTIME];
-//   event.waitUntil(
-//     caches
-//       .keys()
-//       .then((cacheNames) => {
-//         return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
-//       })
-//       .then((cachesToDelete) => {
-//         return Promise.all(
-//           cachesToDelete.map((cacheToDelete) => {
-//             return caches.delete(cacheToDelete);
-//           })
-//         );
-//       })
-//       .then(() => self.clients.claim())
-//   );
-// });
 
 self.addEventListener("fetch", (event) => {
   if (event.request.url.includes("/api/")) {
