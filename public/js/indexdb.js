@@ -13,8 +13,10 @@ request.onupgradeneeded = ({ target }) => {
   db.createObjectStore("pending", { autoIncrement: true });
 };
 
-request.onsuccess = () => {
-  // let db = target.result;
+request.onsuccess = ({ target }) => {
+  db = target.result;
+
+  // check if app is online before reading from db
   if (navigator.onLine) {
     checkDatabase();
   }
