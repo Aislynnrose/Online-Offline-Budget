@@ -1,2 +1,4 @@
 node_modules
 INSTREADME.md
+.vscode
+package-lock.json
